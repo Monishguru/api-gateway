@@ -1,0 +1,43 @@
+server:
+  port: 8998
+  
+spring:
+  application:
+    name: API-GATEWAY
+  cloud: 
+    gateway:
+      enabled: true
+      predicate:
+        path:
+          enabled: true
+      routes:
+      - id: Customer-Service
+        uri: lb://CUSTOMER-SERVICE
+        predicates:
+        - Path=/customer/**
+     
+      - id: Billing-Service
+        uri: lb://BILLING-SERVICE
+        predicates:
+        - Path=/billing/**,/shipment/**
+        
+      - id: Tracking-Service
+        uri: lb://TRACKING-SERVICE
+        predicates:
+        - Path=/tracking/**     
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone : http://localhost:9000/eureka
+  instance:
+    hostname: localhost
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    
