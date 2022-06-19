@@ -37,7 +37,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone : http://discovery-0.discovery.default.svc.cluster.local:9000/eureka
+      defaultZone : http://discovery-0.discovery.monishguru-stage.svc.cluster.local:9000/eureka
   instance:
     prefer-ip-address: true
     hostname: discovery-0
