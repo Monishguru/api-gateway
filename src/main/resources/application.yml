@@ -39,4 +39,5 @@ eureka:
     service-url:
       defaultZone : http://discovery-0.discovery.default.svc.cluster.local:9000/eureka
   instance:
+    prefer-ip-address: true
     hostname: discovery-0
