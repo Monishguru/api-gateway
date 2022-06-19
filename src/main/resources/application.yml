@@ -25,11 +25,18 @@ spring:
         uri: lb://TRACKING-SERVICE
         predicates:
         - Path=/tracking/**   
-  config:
-    import: configserver:http://localhost:9111
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-    
+ 
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone : http://discovery-0.discovery.default.svc.cluster.local:9000/eureka
+  instance:
+    hostname: discovery-0
